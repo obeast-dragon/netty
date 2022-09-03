@@ -38,6 +38,9 @@ import io.netty.util.internal.TypeParameterMatcher;
  * Be aware that depending of the constructor parameters it will release all handled messages by passing them to
  * {@link ReferenceCountUtil#release(Object)}. In this case you may need to use
  * {@link ReferenceCountUtil#retain(Object)} if you pass the object to the next handler in the {@link ChannelPipeline}.
+ *
+ * 与ChannelInboundHandlerAdapter的区别
+ *  1、当channelRead0()方法执行完返回时  SimpleChannelInboundHandler负责释放保存该消息的ByteBuf的内存引用
  */
 public abstract class SimpleChannelInboundHandler<I> extends ChannelInboundHandlerAdapter {
 
@@ -89,6 +92,9 @@ public abstract class SimpleChannelInboundHandler<I> extends ChannelInboundHandl
         return matcher.match(msg);
     }
 
+    /**
+     * Describes: 当从服务器接收到一条消息时调用
+     * */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         boolean release = true;
@@ -115,6 +121,9 @@ public abstract class SimpleChannelInboundHandler<I> extends ChannelInboundHandl
      *                      belongs to
      * @param msg           the message to handle
      * @throws Exception    is thrown if an error occurred
+     * 接收数据；
+     * 注意可能会分块接收数据，也就意味着会多次调用这个方法
+     * 同时TCP保证了发送它们按照顺序接收
      */
     protected abstract void channelRead0(ChannelHandlerContext ctx, I msg) throws Exception;
 }

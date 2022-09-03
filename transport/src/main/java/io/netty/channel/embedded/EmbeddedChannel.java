@@ -47,6 +47,7 @@ import io.netty.util.internal.logging.InternalLoggerFactory;
 
 /**
  * Base class for {@link Channel} implementations that are used in an embedded fashion.
+ * 以嵌入式方式使用的
  */
 public class EmbeddedChannel extends AbstractChannel {
 

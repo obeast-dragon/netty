@@ -33,6 +33,7 @@ import java.util.Queue;
 
 /**
  * A {@link ServerChannel} for the local transport which allows in VM communication.
+ * 用于允许 VM 通信的本地传输。
  */
 public class LocalServerChannel extends AbstractServerChannel {
 

@@ -23,6 +23,7 @@ import java.net.Socket;
 
 /**
  * A duplex {@link Channel} that has two sides that can be shutdown independently.
+ * 双工 Channel
  */
 public interface DuplexChannel extends Channel {
     /**

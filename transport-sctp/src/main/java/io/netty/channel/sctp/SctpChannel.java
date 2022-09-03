@@ -30,6 +30,9 @@ import java.util.Set;
  * <p>
  * The SctpChannel is a message-oriented, connected transport which supports multi-streaming and multi-homing.
  * </p>
+ * 基于数据块传输协议sctp的Channel
+ * 兼有TCP/UDP两者特征。
+ * 位于传输层的协议
  */
 public interface SctpChannel extends Channel {
     @Override

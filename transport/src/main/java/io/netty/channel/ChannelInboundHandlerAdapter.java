@@ -30,6 +30,13 @@ import io.netty.channel.ChannelHandlerMask.Skip;
  * method returns automatically. If you are looking for a {@link ChannelInboundHandler} implementation that
  * releases the received messages automatically, please see {@link SimpleChannelInboundHandler}.
  * </p>
+ *
+ * 响应的数据的接口 的实现
+ *
+ * 与SimpleChannelInboundHandler的区别
+ * 1、作为服务器需要将消息送回给发生者 ,而write()是异步的，
+ *      直到channelRead()方法返回后可能仍然没有完成，因此使用ChannelInboundHandlerAdapter在这个时间点上不会释放消息，
+ *      消息在channelReadComplete()方法中的writeAndFlush()倍释放
  */
 public class ChannelInboundHandlerAdapter extends ChannelHandlerAdapter implements ChannelInboundHandler {
 
@@ -62,6 +69,8 @@ public class ChannelInboundHandlerAdapter extends ChannelHandlerAdapter implemen
      * to the next {@link ChannelInboundHandler} in the {@link ChannelPipeline}.
      *
      * Sub-classes may override this method to change behavior.
+     *
+     * 新建立的连接的回调
      */
     @Skip
     @Override
@@ -86,6 +95,7 @@ public class ChannelInboundHandlerAdapter extends ChannelHandlerAdapter implemen
      * to the next {@link ChannelInboundHandler} in the {@link ChannelPipeline}.
      *
      * Sub-classes may override this method to change behavior.
+     * 对于每个传入的消息都要调用
      */
     @Skip
     @Override
@@ -98,6 +108,8 @@ public class ChannelInboundHandlerAdapter extends ChannelHandlerAdapter implemen
      * to the next {@link ChannelInboundHandler} in the {@link ChannelPipeline}.
      *
      * Sub-classes may override this method to change behavior.
+     *
+     * 通知 ChannelInboundHandlerAdapter 最后一次对channelRead()的调用是当前批量读取中的最后一条消息
      */
     @Skip
     @Override
@@ -134,6 +146,8 @@ public class ChannelInboundHandlerAdapter extends ChannelHandlerAdapter implemen
      * to the next {@link ChannelHandler} in the {@link ChannelPipeline}.
      *
      * Sub-classes may override this method to change behavior.
+     *
+     * 在读取操作期间，有异常抛出时就会调用
      */
     @Skip
     @Override

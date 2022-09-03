@@ -26,6 +26,10 @@ import java.net.InetSocketAddress;
  * Supported UDT {@link UdtChannel} are available via {@link NioUdtProvider}.
  *
  * @deprecated The UDT transport is no longer maintained and will be removed.
+ *
+ *    1.UDT建于UDP之上，并引入新的拥塞控制和数据可靠性控制机制；
+ *    2.UDT是面向连接的双向的应用层协议，它同时支持可靠的数据流传输和部分可靠的数据报传输，而UDP是面向无连接不可靠的协议；
+ *    位于应用层协议
  */
 @Deprecated
 public interface UdtChannel extends Channel {
