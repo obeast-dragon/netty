@@ -74,7 +74,12 @@ import java.net.SocketAddress;
  * resources once you are done with the {@link Channel}. This ensures all resources are
  * released in a proper way, i.e. filehandles.
  *
- * 一个Channel在其生命周期里只绑定一个EventLoop
+ * 一个Channel在其生命周期里只绑定一个EventLoop、ChannelConfig
+ *
+ * 当Channel被创建的时候会自动分配它专属ChannelPipeline
+ *
+ * Channel是独一味二的
+ * 继承Comparable为了 -> 则两个不同的实例都会返回相同的hashcode时候 那么 AbstractChannel comparableTo()的实现会抛出一个Error
  */
 public interface Channel extends AttributeMap, ChannelOutboundInvoker, Comparable<Channel> {
 
@@ -85,6 +90,8 @@ public interface Channel extends AttributeMap, ChannelOutboundInvoker, Comparabl
 
     /**
      * Return the {@link EventLoop} this {@link Channel} was registered to.
+     *
+     * 注册EventLoop
      */
     EventLoop eventLoop();
 
@@ -129,6 +136,7 @@ public interface Channel extends AttributeMap, ChannelOutboundInvoker, Comparabl
      *
      * @return the local address of this channel.
      *         {@code null} if this channel is not bound.
+     * 返回本地地址
      */
     SocketAddress localAddress();
 
@@ -145,6 +153,7 @@ public interface Channel extends AttributeMap, ChannelOutboundInvoker, Comparabl
      *         use {@link DatagramPacket#recipient()} to determine
      *         the origination of the received message as this method will
      *         return {@code null}.
+     * 返回远程地址
      */
     SocketAddress remoteAddress();
 
@@ -181,6 +190,7 @@ public interface Channel extends AttributeMap, ChannelOutboundInvoker, Comparabl
 
     /**
      * Return the assigned {@link ChannelPipeline}.
+     * 返回注册的ChannelPipeline
      */
     ChannelPipeline pipeline();
 

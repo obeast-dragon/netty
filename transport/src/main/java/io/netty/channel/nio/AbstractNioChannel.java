@@ -44,6 +44,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Abstract base class for {@link Channel} implementations which use a Selector based approach.
+ * 使用java.nio.channels包作为基础--  基于选择器的方式
  */
 public abstract class AbstractNioChannel extends AbstractChannel {
 

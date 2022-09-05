@@ -204,6 +204,7 @@ public interface ChannelOutboundInvoker {
      * Request to write a message via this {@link ChannelHandlerContext} through the {@link ChannelPipeline}.
      * This method will not request to actual flush, so be sure to call {@link #flush()}
      * once you want to request to flush all pending data to the actual transport.
+     * 将数据写到远程节点 。 这个数据将被传递给ChannelPipeline，并且排队直到它被冲刷
      */
     ChannelFuture write(Object msg);
 
@@ -216,6 +217,8 @@ public interface ChannelOutboundInvoker {
 
     /**
      * Request to flush all pending messages via this ChannelOutboundInvoker.
+     *
+     * 将之前的数据冲刷到底层传输， 如一个socket
      */
     ChannelOutboundInvoker flush();
 

@@ -67,6 +67,8 @@ public abstract class ChannelInitializer<C extends Channel> extends ChannelInbou
      * @throws Exception    is thrown if an error occurs. In that case it will be handled by
      *                      {@link #exceptionCaught(ChannelHandlerContext, Throwable)} which will by default close
      *                      the {@link Channel}.
+     * ChannelInitializer 将在 ChannelPipeline 中安装一组自定义的ChannelHandler
+     * 随后ChannelInitializer将会ChannelPipeline移除自己
      */
     protected abstract void initChannel(C ch) throws Exception;
 

@@ -62,6 +62,8 @@ import java.util.List;
  *     ch.write(res);
  * }
  * </pre>
+ *
+ * 用于支持google 的 protocol buffers
  */
 @Sharable
 public class ProtobufDecoder extends MessageToMessageDecoder<ByteBuf> {

@@ -147,6 +147,7 @@ public class DefaultChannelPipeline implements ChannelPipeline {
         return channel;
     }
 
+
     @Override
     public final ChannelPipeline addFirst(String name, ChannelHandler handler) {
         return addFirst(null, name, handler);
@@ -159,8 +160,10 @@ public class DefaultChannelPipeline implements ChannelPipeline {
             checkMultiplicity(handler);
             name = filterName(name, handler);
 
+            //引用容器
             newCtx = newContext(group, name, handler);
 
+            //ChannelHandler 的新增会被放到 AbstractChannelHandlerContext 中
             addFirst0(newCtx);
 
             // If the registered is false it means that the channel was not registered on an eventLoop yet.

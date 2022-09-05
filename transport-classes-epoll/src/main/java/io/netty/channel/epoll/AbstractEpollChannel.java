@@ -55,7 +55,13 @@ import java.util.concurrent.TimeUnit;
 import static io.netty.channel.internal.ChannelUtils.WRITE_STATUS_SNDBUF_FULL;
 import static io.netty.channel.unix.UnixChannelUtil.computeRemoteAddr;
 import static io.netty.util.internal.ObjectUtil.checkNotNull;
-
+/**
+ * 由JNI驱动的epoll()和非阻塞I/O。
+ * 这个传输支持只有在Linux 上可用的多种特性，如SO_REUSEPORT,
+ * 比nio传输的更快，而且是完全非阻塞的
+ *
+ * 更加适配Netty
+ * */
 abstract class AbstractEpollChannel extends AbstractChannel implements UnixChannel {
     private static final ChannelMetadata METADATA = new ChannelMetadata(false);
     final LinuxSocket socket;
