@@ -48,6 +48,8 @@ import io.netty.util.internal.logging.InternalLoggerFactory;
 /**
  * Base class for {@link Channel} implementations that are used in an embedded fashion.
  * 以嵌入式方式使用的
+ *
+ * 允许使用ChannelHandler而又不需要一个真正的基于网络的传输。这在测试你的ChannelHandler实现时非常方便
  */
 public class EmbeddedChannel extends AbstractChannel {
 

@@ -46,6 +46,8 @@ import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 /**
  * A {@link Channel} for the local transport.
+ *
+ * 可以使用本地VM内部通过管道进行通信的本地传输
  */
 public class LocalChannel extends AbstractChannel {
     private static final InternalLogger logger = InternalLoggerFactory.getInstance(LocalChannel.class);
