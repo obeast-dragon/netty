@@ -97,6 +97,8 @@ public final class Unpooled {
     /**
      * Creates a new big-endian Java heap buffer with reasonably small initial capacity, which
      * expands its capacity boundlessly on demand.
+     *
+     * 创建一个基于Jvm堆的缓存区
      */
     public static ByteBuf buffer() {
         return ALLOC.heapBuffer();
@@ -105,6 +107,8 @@ public final class Unpooled {
     /**
      * Creates a new big-endian direct buffer with reasonably small initial capacity, which
      * expands its capacity boundlessly on demand.
+     *
+     * 创建一个直接缓冲区
      */
     public static ByteBuf directBuffer() {
         return ALLOC.directBuffer();
@@ -342,6 +346,8 @@ public final class Unpooled {
 
     /**
      * Returns a new big-endian composite buffer with no components.
+     *
+     * 创建一个直接缓存区+Jvm缓存区的复合缓存区
      */
     public static CompositeByteBuf compositeBuffer() {
         return compositeBuffer(AbstractByteBufAllocator.DEFAULT_MAX_COMPONENTS);
