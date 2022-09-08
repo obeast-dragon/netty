@@ -574,6 +574,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * @throws IndexOutOfBoundsException
      *         if the specified {@code index} is less than {@code 0} or
      *         {@code index + 1} is greater than {@code this.capacity}
+     *
+     * 获取字节 但是不是不会该变  readerIndex or  writerIndex
      */
     public abstract byte  getByte(int index);
 
@@ -1365,6 +1367,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      *
      * @throws IndexOutOfBoundsException
      *         if {@code this.readableBytes} is less than {@code 1}
+     *
+     * 将字节读取到数组的，然后改变readerIndex 的值
      */
     public abstract byte  readByte();
 
@@ -2130,6 +2134,7 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      *
      * @return {@code -1} if the processor iterated to or beyond the end of the readable bytes.
      *         The last-visited index If the {@link ByteProcessor#process(byte)} returned {@code false}.
+     *
      */
     public abstract int forEachByte(ByteProcessor processor);
 
@@ -2166,6 +2171,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * This method is identical to {@code buf.copy(buf.readerIndex(), buf.readableBytes())}.
      * This method does not modify {@code readerIndex} or {@code writerIndex} of
      * this buffer.
+     *
+     * 不同于duplicate() 的是 此方法将返回一个真实的独立数据副本
      */
     public abstract ByteBuf copy();
 
@@ -2241,6 +2248,11 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * @return A buffer whose readable content is equivalent to the buffer returned by {@link #slice()}.
      * However this buffer will share the capacity of the underlying buffer, and therefore allows access to all of the
      * underlying content if necessary.
+     *
+     * 返回一个新的ByteBuf 实例， 它具有自己的读索引、写索引和标记索引。
+     * 其内部存储和JDK的ByteBuffer一样是共享的。
+     * 使得创建这个派生缓冲区很容易，
+     * 但是如果你修改了它的内容，也同时修改了其对应的源实例，所以要小心
      */
     public abstract ByteBuf duplicate();
 
