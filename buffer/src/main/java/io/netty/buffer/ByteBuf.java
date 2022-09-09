@@ -563,6 +563,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * @throws IndexOutOfBoundsException
      *         if the specified {@code index} is less than {@code 0} or
      *         {@code index + 1} is greater than {@code this.capacity}
+     *
+     * 返回索引处的Boolean值 （索引不变）
      */
     public abstract boolean getBoolean(int index);
 
@@ -587,6 +589,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * @throws IndexOutOfBoundsException
      *         if the specified {@code index} is less than {@code 0} or
      *         {@code index + 1} is greater than {@code this.capacity}
+     *
+     * 返回索引处的无符号字节值作为short返回
      */
     public abstract short getUnsignedByte(int index);
 
@@ -598,6 +602,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * @throws IndexOutOfBoundsException
      *         if the specified {@code index} is less than {@code 0} or
      *         {@code index + 2} is greater than {@code this.capacity}
+     *
+     * 返回给定索引处的Short的值
      */
     public abstract short getShort(int index);
 
@@ -609,6 +615,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * @throws IndexOutOfBoundsException
      *         if the specified {@code index} is less than {@code 0} or
      *         {@code index + 2} is greater than {@code this.capacity}
+     *
+     * 获取给定索引处的16位的short的值
      */
     public abstract short getShortLE(int index);
 
@@ -620,6 +628,7 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * @throws IndexOutOfBoundsException
      *         if the specified {@code index} is less than {@code 0} or
      *         {@code index + 2} is greater than {@code this.capacity}
+     * 获取无符号的16位short
      */
     public abstract int getUnsignedShort(int index);
 
@@ -643,6 +652,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * @throws IndexOutOfBoundsException
      *         if the specified {@code index} is less than {@code 0} or
      *         {@code index + 3} is greater than {@code this.capacity}
+     *
+     * 获取24位 中等整型的值
      */
     public abstract int   getMedium(int index);
 
@@ -688,6 +699,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * @throws IndexOutOfBoundsException
      *         if the specified {@code index} is less than {@code 0} or
      *         {@code index + 4} is greater than {@code this.capacity}
+     *
+     * 返回索引处的int值
      */
     public abstract int   getInt(int index);
 
@@ -2194,6 +2207,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * <p>
      * Also be aware that this method will NOT call {@link #retain()} and so the
      * reference count will NOT be increased.
+     *
+     * 返回缓存区的分片的部分引用
      */
     public abstract ByteBuf slice();
 
