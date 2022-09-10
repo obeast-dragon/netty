@@ -249,6 +249,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
 
     /**
      * Returns the number of bytes (octets) this buffer can contain.
+     *
+     * 返回ByteBuf可以容纳的最大字节数
      */
     public abstract int capacity();
 
@@ -406,12 +408,16 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
     /**
      * Returns the number of readable bytes which is equal to
      * {@code (this.writerIndex - this.readerIndex)}.
+     *
+     * 返回可被读取的字节数
      */
     public abstract int readableBytes();
 
     /**
      * Returns the number of writable bytes which is equal to
      * {@code (this.capacity - this.writerIndex)}.
+     *
+     * 返回可被写入的字节数
      */
     public abstract int writableBytes();
 
@@ -434,6 +440,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * Returns {@code true}
      * if and only if {@code (this.writerIndex - this.readerIndex)} is greater
      * than {@code 0}.
+     *
+     * 如果至少有一个字节可被读取，则返回true
      */
     public abstract boolean isReadable();
 
@@ -446,6 +454,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * Returns {@code true}
      * if and only if {@code (this.capacity - this.writerIndex)} is greater
      * than {@code 0}.
+     *
+     * 如果至少有一个字节可被写入，则返回true
      */
     public abstract boolean isWritable();
 
@@ -2379,6 +2389,8 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      * Returns {@code true} if and only if this buffer has a backing byte array.
      * If this method returns true, you can safely call {@link #array()} and
      * {@link #arrayOffset()}.
+     *
+     * 如果ByteBuf是由一个字节数组支撑 则会返回true
      */
     public abstract boolean hasArray();
 
@@ -2387,6 +2399,7 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf>, 
      *
      * @throws UnsupportedOperationException
      *         if there no accessible backing byte array
+     * 如果ByteBuf是由一个字节数组支撑 则返回该数组，否则，它将抛出一个UnsupportedOperationException异常
      */
     public abstract byte[] array();
 
