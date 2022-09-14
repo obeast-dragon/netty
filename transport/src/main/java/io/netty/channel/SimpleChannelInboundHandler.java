@@ -59,6 +59,8 @@ public abstract class SimpleChannelInboundHandler<I> extends ChannelInboundHandl
      *
      * @param autoRelease   {@code true} if handled messages should be released automatically by passing them to
      *                      {@link ReferenceCountUtil#release(Object)}.
+     *
+     * 是否自动释放内存中的资源或者通过ReferenceCountUtil的release()来释放
      */
     protected SimpleChannelInboundHandler(boolean autoRelease) {
         matcher = TypeParameterMatcher.find(this, SimpleChannelInboundHandler.class, "I");

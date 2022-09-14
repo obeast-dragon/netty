@@ -19,6 +19,8 @@ import java.net.SocketAddress;
 
 /**
  * {@link ChannelHandler} which will get notified for IO-outbound-operations.
+ *
+ * 处理出站数据并且允许拦截所有的操作
  */
 public interface ChannelOutboundHandler extends ChannelHandler {
     /**

@@ -177,14 +177,17 @@ import java.lang.annotation.Target;
  */
 public interface ChannelHandler {
 
+//    -----------------------------life cycle ------------------------------------------
     /**
      * Gets called after the {@link ChannelHandler} was added to the actual context and it's ready to handle events.
+     * 当ChannelHandler被添加在到ChannelPipeline 中时被调用
      */
     void handlerAdded(ChannelHandlerContext ctx) throws Exception;
 
     /**
      * Gets called after the {@link ChannelHandler} was removed from the actual context and it doesn't handle events
      * anymore.
+     * 当ChannelPipeline中移除的时候ChannelHandler调用
      */
     void handlerRemoved(ChannelHandlerContext ctx) throws Exception;
 
@@ -193,6 +196,8 @@ public interface ChannelHandler {
      *
      * @deprecated if you want to handle this event you should implement {@link ChannelInboundHandler} and
      * implement the method there.
+     *
+     * 当处理过程中在ChannelPipeline中有错误产生时调用
      */
     @Deprecated
     void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception;
@@ -209,6 +214,9 @@ public interface ChannelHandler {
      * This annotation is provided for documentation purpose, just like
      * <a href="http://www.javaconcurrencyinpractice.com/annotations/doc/">the JCIP annotations</a>.
      */
+
+    //    ----------------------------------------------------------------
+
     @Inherited
     @Documented
     @Target(ElementType.TYPE)

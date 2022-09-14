@@ -74,6 +74,12 @@ import java.net.SocketAddress;
  * resources once you are done with the {@link Channel}. This ensures all resources are
  * released in a proper way, i.e. filehandles.
  *
+ * Channel的生命周期
+ *  1、ChannelUnregistered  Channel已经被创建了，但为被注册到EventLoop
+ *  2、ChannelRegistered Channel 已经注册到EventLoop
+ *  3、ChannelActive Channel处于活动状态（已经连接到它的远程节点）。它现在可以接收和发送数据了
+ *  4、ChannelInActive Channel没有处于连接到远程节点
+ *
  * 一个Channel在其生命周期里只绑定一个EventLoop、ChannelConfig
  *
  * 当Channel被创建的时候会自动分配它专属ChannelPipeline
