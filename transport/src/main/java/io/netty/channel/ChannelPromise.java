@@ -21,6 +21,7 @@ import io.netty.util.concurrent.Promise;
 
 /**
  * Special {@link ChannelFuture} which is writable.
+ * 用于ChannelOutBoundHandler ，当一个Promise被完成之后，其对应的Future的值便不能被修改了
  */
 public interface ChannelPromise extends ChannelFuture, Promise<Void> {
 

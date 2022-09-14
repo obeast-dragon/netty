@@ -123,6 +123,8 @@ public abstract class SimpleChannelInboundHandler<I> extends ChannelInboundHandl
      *                      belongs to
      * @param msg           the message to handle
      * @throws Exception    is thrown if an error occurred
+     * 不需要任何显式（手动）的释放资源
+     *
      * 接收数据；
      * 注意可能会分块接收数据，也就意味着会多次调用这个方法
      * 同时TCP保证了发送它们按照顺序接收

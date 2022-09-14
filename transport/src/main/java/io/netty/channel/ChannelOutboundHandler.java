@@ -30,6 +30,7 @@ public interface ChannelOutboundHandler extends ChannelHandler {
      * @param localAddress  the {@link SocketAddress} to which it should bound
      * @param promise       the {@link ChannelPromise} to notify once the operation completes
      * @throws Exception    thrown if an error occurs
+     * 当请求将Channel绑定到本地地址时被调用
      */
     void bind(ChannelHandlerContext ctx, SocketAddress localAddress, ChannelPromise promise) throws Exception;
 
@@ -41,6 +42,8 @@ public interface ChannelOutboundHandler extends ChannelHandler {
      * @param localAddress      the {@link SocketAddress} which is used as source on connect
      * @param promise           the {@link ChannelPromise} to notify once the operation completes
      * @throws Exception        thrown if an error occurs
+     *
+     * 当请求将Channel连接到远程节点时被调用
      */
     void connect(
             ChannelHandlerContext ctx, SocketAddress remoteAddress,
@@ -52,6 +55,8 @@ public interface ChannelOutboundHandler extends ChannelHandler {
      * @param ctx               the {@link ChannelHandlerContext} for which the disconnect operation is made
      * @param promise           the {@link ChannelPromise} to notify once the operation completes
      * @throws Exception        thrown if an error occurs
+     *
+     * 当请求将Channel断开远程节点时被调用
      */
     void disconnect(ChannelHandlerContext ctx, ChannelPromise promise) throws Exception;
 
@@ -61,6 +66,8 @@ public interface ChannelOutboundHandler extends ChannelHandler {
      * @param ctx               the {@link ChannelHandlerContext} for which the close operation is made
      * @param promise           the {@link ChannelPromise} to notify once the operation completes
      * @throws Exception        thrown if an error occurs
+     *
+     * 当请求关闭Channel时被调用
      */
     void close(ChannelHandlerContext ctx, ChannelPromise promise) throws Exception;
 
@@ -70,6 +77,8 @@ public interface ChannelOutboundHandler extends ChannelHandler {
      * @param ctx               the {@link ChannelHandlerContext} for which the close operation is made
      * @param promise           the {@link ChannelPromise} to notify once the operation completes
      * @throws Exception        thrown if an error occurs
+     *
+     * 当请求将Channel从EventLoop注销时被调用
      */
     void deregister(ChannelHandlerContext ctx, ChannelPromise promise) throws Exception;
 

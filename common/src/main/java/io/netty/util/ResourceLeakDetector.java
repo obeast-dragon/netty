@@ -39,6 +39,9 @@ import static io.netty.util.internal.StringUtil.EMPTY_STRING;
 import static io.netty.util.internal.StringUtil.NEWLINE;
 import static io.netty.util.internal.StringUtil.simpleClassName;
 
+/**
+ * 对应用程序的缓冲区分配做大概1%的采样来检查内存泄露。相关开销是非常小的
+ * */
 public class ResourceLeakDetector<T> {
 
     private static final String PROP_LEVEL_OLD = "io.netty.leakDetectionLevel";
@@ -57,6 +60,14 @@ public class ResourceLeakDetector<T> {
 
     /**
      * Represents the level of resource leak detection.
+     * 泄露相关级别
+     * 1、DISABLED 禁用泄露测试，测试完成之后才进行设置
+     * 2、SIMPLE 使用1%的默认采样率并报告任何发现的泄露，default
+     * 3、ADVANCED 使用默认采样率，报告所发现的任何的泄露以及对应的消息被访问的位置
+     * 4、PARANOID 类似于ADVANCED ，但是会堆每一个消息都进行采样，所以开销最大，一直用于调试阶段
+     *
+     * 任何指定
+     * java -Dio.netty.leakDetectionLevel=ADVANCED
      */
     public enum Level {
         /**
